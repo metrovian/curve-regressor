@@ -1,5 +1,5 @@
 #pragma once
-#include "Eigen/Core"
+#include "Eigen/Dense"
 
 class abstract_linear {
 protected:
@@ -11,8 +11,8 @@ protected:
 	virtual Eigen::VectorXd post_process(const Eigen::VectorXd &range) const;
 
 public:
-	double calibrate(const Eigen::VectorXd &domain, const Eigen::VectorXd &range);
-	double estimate(const Eigen::VectorXd &domain);
+	Eigen::VectorXd calibrate(const Eigen::VectorXd &domain, const Eigen::VectorXd &range);
+	Eigen::VectorXd estimate(const Eigen::VectorXd &domain);
 	virtual ~abstract_linear() = default;
 };
 
