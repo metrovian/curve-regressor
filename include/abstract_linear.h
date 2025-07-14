@@ -18,5 +18,12 @@ public:
 
 class regressor_linear : public abstract_linear {
 protected:
-	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const override;
+	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+};
+
+class regressor_exponential : public abstract_linear {
+protected:
+	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+	virtual Eigen::VectorXd pre_process(const Eigen::VectorXd &range) const final;
+	virtual Eigen::VectorXd post_process(const Eigen::VectorXd &range) const final;
 };

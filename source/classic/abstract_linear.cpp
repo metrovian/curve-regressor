@@ -27,3 +27,18 @@ Eigen::MatrixXd regressor_linear::construct_model(const Eigen::VectorXd &domain)
 	model.col(1) = Eigen::VectorXd::Ones(domain.size());
 	return model;
 }
+
+Eigen::MatrixXd regressor_exponential::construct_model(const Eigen::VectorXd &domain) const {
+	Eigen::MatrixXd model(domain.size(), 2);
+	model.col(0) = domain;
+	model.col(1) = Eigen::VectorXd::Ones(domain.size());
+	return model;
+}
+
+Eigen::VectorXd regressor_exponential::pre_process(const Eigen::VectorXd &range) const {
+	return range.array().log().matrix();
+}
+
+Eigen::VectorXd regressor_exponential::post_process(const Eigen::VectorXd &range) const {
+	return range.array().exp().matrix();
+}
