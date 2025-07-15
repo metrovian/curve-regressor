@@ -4,8 +4,6 @@
 class abstract_linear {
 protected:
 	Eigen::VectorXd parameters;
-
-protected:
 	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const = 0;
 	virtual Eigen::VectorXd pre_process(const Eigen::VectorXd &range) const;
 	virtual Eigen::VectorXd post_process(const Eigen::VectorXd &range) const;
@@ -19,6 +17,15 @@ public:
 class regressor_linear : public abstract_linear {
 protected:
 	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+};
+
+class regressor_polynomial : public abstract_linear {
+protected:
+	int8_t parameters_degree;
+	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+
+public:
+	regressor_polynomial(int8_t degree) : parameters_degree(degree) {}
 };
 
 class regressor_exponential : public abstract_linear {

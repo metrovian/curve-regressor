@@ -28,6 +28,15 @@ Eigen::MatrixXd regressor_linear::construct_model(const Eigen::VectorXd &domain)
 	return model;
 }
 
+Eigen::MatrixXd regressor_polynomial::construct_model(const Eigen::VectorXd &domain) const {
+	Eigen::MatrixXd model(domain.size(), parameters_degree + 1);
+	for (int8_t i = 0; i < parameters_degree + 1; ++i) {
+		model.col(parameters_degree - i) = domain.array().pow(i).matrix();
+	}
+
+	return model;
+}
+
 Eigen::MatrixXd regressor_exponential::construct_model(const Eigen::VectorXd &domain) const {
 	Eigen::MatrixXd model(domain.size(), 2);
 	model.col(0) = domain;
