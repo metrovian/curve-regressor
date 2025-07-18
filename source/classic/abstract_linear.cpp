@@ -56,9 +56,9 @@ Eigen::MatrixXd regressor_exponential::construct_model(const Eigen::VectorXd &do
 }
 
 Eigen::VectorXd regressor_exponential::pre_process(const Eigen::VectorXd &range) const {
-	return range.array().log().matrix();
+	return (range.array() - parameters_bias).log().matrix();
 }
 
 Eigen::VectorXd regressor_exponential::post_process(const Eigen::VectorXd &range) const {
-	return range.array().exp().matrix();
+	return (range.array().exp() + parameters_bias).matrix();
 }
