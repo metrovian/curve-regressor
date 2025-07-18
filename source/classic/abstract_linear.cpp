@@ -28,6 +28,13 @@ Eigen::MatrixXd regressor_linear::construct_model(const Eigen::VectorXd &domain)
 	return model;
 }
 
+Eigen::MatrixXd regressor_reciprocal::construct_model(const Eigen::VectorXd &domain) const {
+	Eigen::MatrixXd model(domain.size(), 2);
+	model.col(0) = domain.array().pow(parameters_degree).inverse().matrix();
+	model.col(1) = Eigen::VectorXd::Ones(domain.size());
+	return model;
+}
+
 Eigen::MatrixXd regressor_polynomial::construct_model(const Eigen::VectorXd &domain) const {
 	Eigen::MatrixXd model(domain.size(), parameters_degree + 1);
 	for (int8_t i = 0; i < parameters_degree + 1; ++i) {

@@ -19,6 +19,15 @@ protected:
 	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
 };
 
+class regressor_reciprocal : public abstract_linear {
+protected:
+	int8_t parameters_degree;
+	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+
+public:
+	regressor_reciprocal(int8_t degree) : parameters_degree(degree) {}
+};
+
 class regressor_polynomial : public abstract_linear {
 protected:
 	int8_t parameters_degree;
