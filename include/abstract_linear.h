@@ -28,6 +28,15 @@ public:
 	regressor_polynomial(int8_t degree) : parameters_degree(degree) {}
 };
 
+class regressor_sinusoidal : public abstract_linear {
+protected:
+	double parameters_period;
+	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;
+
+public:
+	regressor_sinusoidal(double period) : parameters_period(period) {}
+};
+
 class regressor_exponential : public abstract_linear {
 protected:
 	virtual Eigen::MatrixXd construct_model(const Eigen::VectorXd &domain) const final;

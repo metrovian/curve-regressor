@@ -37,6 +37,17 @@ Eigen::MatrixXd regressor_polynomial::construct_model(const Eigen::VectorXd &dom
 	return model;
 }
 
+Eigen::MatrixXd regressor_sinusoidal::construct_model(const Eigen::VectorXd &domain) const {
+	Eigen::MatrixXd model(domain.size(), 3);
+	for (int32_t i = 0; i < domain.size(); ++i) {
+		model(i, 0) = std::sin(M_2_PI * domain(i) / parameters_period);
+		model(i, 1) = std::cos(M_2_PI * domain(i) / parameters_period);
+		model(i, 2) = 1.0;
+	}
+
+	return model;
+}
+
 Eigen::MatrixXd regressor_exponential::construct_model(const Eigen::VectorXd &domain) const {
 	Eigen::MatrixXd model(domain.size(), 2);
 	model.col(0) = domain;
