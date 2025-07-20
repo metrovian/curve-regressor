@@ -6,7 +6,7 @@
 - Resistance temperature detector ( RTD )
 - Photodiode detector ( PD )
 - Linear variable differential transformer ( LVDT )
-- Geiger counter ( GC )
+- Geiger–Müller tube counter ( GMTC )
 
 <br/></br>
 Copyright (c) 2025 metrovian [ MIT LICENSE ]
