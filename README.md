@@ -5,8 +5,8 @@
 ## Hardwares ##
 - Resistance temperature detector ( RTD )
 - Photodiode detector ( PD )
-- Geiger counter ( GC )
 - Linear variable differential transformer ( LVDT )
+- Geiger counter ( GC )
 
 <br/></br>
 Copyright (c) 2025 metrovian [ MIT LICENSE ]
