@@ -1,13 +1,12 @@
-## Classic Regression ##
-- Linear equation
-- Reciprocal equation
-- Polynomial equation
-- Sinusoidal equation
-- Exponential equation
+## Features ##
+- Mathematical classic regression model
+- Mathematical symbolic regression model
 <br/></br>
-## Symbolic Regression ##
-- Sparse programming
-- Genetic programming
+## Hardwares ##
+- Resistance temperature detector ( RTD )
+- Photodiode detector ( PD )
+- Geiger counter ( GC )
+- Linear variable differential transformer ( LVDT )
 
 <br/></br>
 Copyright (c) 2025 metrovian [ MIT LICENSE ]
