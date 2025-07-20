@@ -6,6 +6,7 @@
 - Resistance temperature detector ( RTD )
 - Photodiode detector ( PD )
 - Linear variable differential transformer ( LVDT )
+- Michelson–Morley interferometer ( MSI )
 - Geiger–Müller tube counter ( GMTC )
 
 <br/></br>
