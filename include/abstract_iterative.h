@@ -25,5 +25,5 @@ protected:
 	virtual double step_model(const Eigen::VectorXd &domain, const Eigen::VectorXd &range) final;
 
 public:
-	regressor_lasso(const int degree, const double lambda) : parameters_degree(degree), parameters_lambda(lambda) {}
+	regressor_lasso(const int degree, const double lambda);
 };
