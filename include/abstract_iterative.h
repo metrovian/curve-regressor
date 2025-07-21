@@ -27,3 +27,16 @@ protected:
 public:
 	regressor_lasso(const int degree, const double lambda);
 };
+
+class regressor_ridge : public abstract_iterative {
+protected:
+	int parameters_degree;
+	double parameters_lambda;
+	virtual double construct_model(const double domain) final;
+	virtual double residual_model(const double domain, const double range) final;
+	virtual double residual_model(const Eigen::VectorXd &domain, const Eigen::VectorXd &range) final;
+	virtual double step_model(const Eigen::VectorXd &domain, const Eigen::VectorXd &range) final;
+
+public:
+	regressor_ridge(const int degree, const double lambda);
+};

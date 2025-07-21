@@ -89,3 +89,61 @@ double regressor_lasso::step_model(const Eigen::VectorXd &domain, const Eigen::V
 regressor_lasso::regressor_lasso(const int degree, const double lambda) : parameters_degree(degree), parameters_lambda(lambda) {
 	parameters = Eigen::VectorXd(degree + 1);
 }
+
+double regressor_ridge::construct_model(const double domain) {
+	double model = 0;
+	for (int32_t i = 0; i < parameters_degree + 1; ++i) {
+		model += parameters(parameters_degree - i) * std::pow(domain, i);
+	}
+
+	return model;
+}
+
+double regressor_ridge::residual_model(const double domain, const double range) {
+	return std::pow(construct_model(domain) - range, 2.0);
+}
+
+double regressor_ridge::residual_model(const Eigen::VectorXd &domain, const Eigen::VectorXd &range) {
+	double residual = 0;
+	for (int32_t i = 0; i < domain.size(); ++i) {
+		residual += residual_model(domain(i), range(i));
+	}
+
+	residual /= static_cast<double>(domain.size() * 2);
+	for (int32_t i = 0; i < parameters_degree + 1; ++i) {
+		residual += parameters_lambda * std::pow(parameters(i), 2.0);
+	}
+
+	return residual;
+}
+
+double regressor_ridge::step_model(const Eigen::VectorXd &domain, const Eigen::VectorXd &range) {
+	for (int32_t i = 0; i < parameters_degree + 1; ++i) {
+		double numerator = 0;
+		double denominator = 0;
+
+		for (int32_t j = 0; j < domain.size(); ++j) {
+			double power = std::pow(domain(j), i);
+			double predict = std::pow(range(j), 1);
+			for (int32_t k = 0; k < parameters_degree + 1; ++k) {
+				if (k != i) {
+					predict -= parameters(parameters_degree - k) * std::pow(domain(j), k);
+				}
+			}
+
+			numerator += predict * power;
+			denominator += power * power;
+		}
+
+		denominator += parameters_lambda * 2;
+		if (denominator) {
+			parameters(parameters_degree - i) = numerator / denominator;
+		}
+	}
+
+	return residual_model(domain, range);
+}
+
+regressor_ridge::regressor_ridge(const int degree, const double lambda) : parameters_degree(degree), parameters_lambda(lambda) {
+	parameters = Eigen::VectorXd(degree + 1);
+}
