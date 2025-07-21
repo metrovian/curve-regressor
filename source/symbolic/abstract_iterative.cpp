@@ -47,7 +47,7 @@ double regressor_lasso::residual_model(const Eigen::VectorXd &domain, const Eige
 		residual += residual_model(domain(i), range(i));
 	}
 
-	residual /= static_cast<double>(parameters_degree * 2);
+	residual /= static_cast<double>(domain.size() * 2);
 	for (int32_t i = 0; i < parameters_degree + 1; ++i) {
 		residual += parameters_lambda * std::fabs(parameters(i));
 	}
