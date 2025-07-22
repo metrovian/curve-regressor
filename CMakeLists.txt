@@ -10,23 +10,13 @@ INCLUDE_DIRECTORIES(
         ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/tinyexpr
 )
 
-FILE(GLOB_RECURSE SOURCES_CLASSIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/classic/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/classic/*.c
+FILE(GLOB_RECURSE SOURCES_COMMON
+        ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp
+        ${CMAKE_CURRENT_SOURCE_DIR}/source/*.c
 )
 
-FILE(GLOB_RECURSE SOURCES_SYMBOLIC
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/symbolic/*.cpp
-        ${CMAKE_CURRENT_SOURCE_DIR}/source/symbolic/*.c
-)
-
-ADD_EXECUTABLE(classic
-        module/main_classic.cpp
+ADD_EXECUTABLE(start
+        module/main_start.cpp
         3rdparty/tinyexpr/tinyexpr.c
-        ${SOURCES_CLASSIC}
-)
-
-ADD_EXECUTABLE(symbolic
-        module/main_symbolic.cpp
-        ${SOURCES_SYMBOLIC}
+        ${SOURCES_COMMON}
 )
