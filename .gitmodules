@@ -4,3 +4,9 @@
 [submodule "3rdparty/tinyexpr"]
 	path = 3rdparty/tinyexpr
 	url = https://github.com/codeplea/tinyexpr.git
+[submodule "3rdparty/spdlog"]
+	path = 3rdparty/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "3rdparty/civetweb"]
+	path = 3rdparty/civetweb
+	url = https://github.com/civetweb/civetweb.git
