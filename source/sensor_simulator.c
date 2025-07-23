@@ -32,6 +32,13 @@ static double sensor_simulator_mmi(double domain) {
 	return CONST_MMI_V0 * cos(M_2_PI / CONST_MMI_A * domain + CONST_MMI_B);
 }
 
+static double sensor_simulator_mzi(double domain) {
+	const static double CONST_MZI_V0 = 1.0000E-03;
+	const static double CONST_MZI_A = 1.5500E-01;
+	const static double CONST_MZI_B = M_PI_4;
+	return CONST_MZI_V0 * cos(M_2_PI / CONST_MZI_A * domain + CONST_MZI_B);
+}
+
 extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double *domain, double *range) {
 	for (int32_t i = 0; i < counts; ++i) {
 		switch (sensor) {
@@ -56,6 +63,12 @@ extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double
 		case SENSOR_MMI: {
 			domain[i] = sensor_simulator_random(-1.5000E-03, 1.5000E-03);
 			range[i] = sensor_simulator_mmi(domain[i]);
+			break;
+		}
+
+		case SENSOR_MZI: {
+			domain[i] = sensor_simulator_random(1.0000E+00, 1.5000E+00);
+			range[i] = sensor_simulator_mzi(domain[i]);
 			break;
 		}
 
