@@ -82,5 +82,6 @@ extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double
 		}
 	}
 
+	log_info("sensor simulation success: %d", counts);
 	return 0;
 }
