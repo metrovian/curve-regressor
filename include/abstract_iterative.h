@@ -12,7 +12,7 @@ protected:
 public:
 	Eigen::VectorXd calibrate(const Eigen::VectorXd &domain, const Eigen::VectorXd &range, const int counts, const double epsilon);
 	Eigen::VectorXd estimate(const Eigen::VectorXd &domain);
-	virtual ~abstract_iterative() = default;
+	virtual ~abstract_iterative() {};
 };
 
 class regressor_lasso : public abstract_iterative {

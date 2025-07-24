@@ -11,7 +11,7 @@ protected:
 public:
 	Eigen::VectorXd calibrate(const Eigen::VectorXd &domain, const Eigen::VectorXd &range);
 	Eigen::VectorXd estimate(const Eigen::VectorXd &domain);
-	virtual ~abstract_linear() = default;
+	virtual ~abstract_linear() {};
 };
 
 class regressor_linear : public abstract_linear {
