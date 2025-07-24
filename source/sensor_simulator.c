@@ -1,4 +1,6 @@
 #include "sensor_simulator.h"
+#include "wrapper_spdlog.h"
+#include "predefined.h"
 
 static double sensor_simulator_random(double minimum, double maximum) {
 	double random = rand() / (double)RAND_MAX;
@@ -42,41 +44,43 @@ static double sensor_simulator_mzi(double domain) {
 extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double *domain, double *range) {
 	for (int32_t i = 0; i < counts; ++i) {
 		switch (sensor) {
-		case SENSOR_RTD: {
+		case SENSOR_RTD:
 			domain[i] = sensor_simulator_random(0.0000E+00, 6.5000E+02);
 			range[i] = sensor_simulator_rtd(domain[i]);
+			log_debug("RTD sensor simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
-		}
 
-		case SENSOR_PD: {
+		case SENSOR_PD:
 			domain[i] = sensor_simulator_random(1.0000E+00, 5.0000E+00);
 			range[i] = sensor_simulator_pd(domain[i]);
+			log_debug("PD sensor simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
-		}
 
-		case SENSOR_LVDT: {
+		case SENSOR_LVDT:
 			domain[i] = sensor_simulator_random(-1.5000E+01, 1.5000E+01);
 			range[i] = sensor_simulator_lvdt(domain[i]);
+			log_debug("LVDT sensor simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
-		}
 
-		case SENSOR_MMI: {
+		case SENSOR_MMI:
 			domain[i] = sensor_simulator_random(-1.5000E-03, 1.5000E-03);
 			range[i] = sensor_simulator_mmi(domain[i]);
+			log_debug("MMI sensor simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
-		}
 
-		case SENSOR_MZI: {
+		case SENSOR_MZI:
 			domain[i] = sensor_simulator_random(1.0000E+00, 1.5000E+00);
 			range[i] = sensor_simulator_mzi(domain[i]);
+			log_debug("MZI sensor simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
-		}
 
-		default: {
-			break;
+		default:
+			domain[i] = 0;
+			range[i] = 0;
+			log_critical("invalid sensor: %d", sensor);
+			return -1;
 		}
-		}
-
-		return 0;
 	}
+
+	return 0;
 }
