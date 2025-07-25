@@ -6,10 +6,13 @@
 #include <stdlib.h>
 #include <signal.h>
 
-#define SYS_LOGGER_SYSTEM       "system"
-#define SYS_LOGGER_FORMAT       "log"
-#define SYS_LOGGER_SIZE         4096
-#define SYS_LOGGER_LOGLEVEL     1
+#define SYSTEM_LOGGER_SYSTEM    "system"
+#define SYSTEM_LOGGER_FORMAT    "log"
+#define SYSTEM_LOGGER_SIZE      4096
+#define SYSTEM_LOGGER_LOGLEVEL  1
+
+#define NETWORK_CIVETWEB_ROOT   "../service-civetweb"
+#define NETWORK_CIVETWEB_PORT   "8080"
 
 #define SYMBOLIC_DEGREE_MAX     15
 #define SYMBOLIC_ITERATION_MAX  100
