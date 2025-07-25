@@ -21,6 +21,15 @@ Eigen::VectorXd abstract_linear::estimate(const Eigen::VectorXd &domain) {
 	return post_process(model_estimate);
 }
 
+Eigen::VectorXd abstract_linear::export_parameters() {
+	return parameters;
+}
+
+Eigen::VectorXd abstract_linear::import_parameters(const Eigen::VectorXd &import) {
+	parameters = import;
+	return parameters;
+}
+
 Eigen::MatrixXd regressor_linear::construct_model(const Eigen::VectorXd &domain) const {
 	Eigen::MatrixXd model(domain.size(), 2);
 	model.col(0) = domain;
