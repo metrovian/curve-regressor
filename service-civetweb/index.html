@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Curve Regressor</title>
+        <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+        <h1>Curve Regressor</h1>
+        <div class="control-panel">
+                <label for="sensor-select">Sensor Simulator</label>
+                <select id="sensor-select">
+                        <option value="RTD">RTD (Resistance Temperature Detector)</option>
+                        <option value="PD">PD (Photodiode)</option>
+                        <option value="LVDT">LVDT (Linear Variable Differential Transformer)</option>
+                        <option value="MMI">MMI (Multimode Interferometer)</option>
+                        <option value="MZI">MZI (Mach-Zehnder Interferometer)</option>
+                </select>
+                <button onclick="acquire()">Acquire</button>
+        </div>
+        <script src="script.js"></script>
+</body>
+</html>

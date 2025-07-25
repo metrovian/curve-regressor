@@ -29,9 +29,7 @@ TARGET_LINK_LIBRARIES(start
         civetweb-c-library
         spdlog::spdlog)
 
-ADD_CUSTOM_COMMAND(
-        TARGET start POST_BUILD
+ADD_CUSTOM_TARGET(HTML ALL
         COMMAND ${CMAKE_COMMAND} -E copy_directory
         "${CMAKE_SOURCE_DIR}/service-civetweb"
-        "$<TARGET_FILE_DIR:start>/service-civetweb"
-)
+        "${CMAKE_BINARY_DIR}/service-civetweb")
