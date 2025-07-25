@@ -11,7 +11,7 @@
 #define SYSTEM_LOGGER_SIZE      4096
 #define SYSTEM_LOGGER_LOGLEVEL  1
 
-#define NETWORK_CIVETWEB_ROOT   "../service-civetweb"
+#define NETWORK_CIVETWEB_ROOT   "service-civetweb"
 #define NETWORK_CIVETWEB_PORT   "8080"
 
 #define SYMBOLIC_DEGREE_MAX     15
