@@ -56,12 +56,12 @@ static int32_t server_api_sensor_simulator_handler(struct mg_connection *connect
 	double domain[SENSOR_DATA_COUNTS] = {0};
 	double range[SENSOR_DATA_COUNTS] = {0};
 	if (sensor_simulator((sensor_simulator_t)sensor, SENSOR_DATA_COUNTS, domain, range) < 0) {
-		log_critical("sensor simulation API: 501 Not Implemented");
+		log_critical("sensor simulation api: %d", RESPONSE_NOT_IMPLEMENTED);
 		return server_api_response(connection, RESPONSE_NOT_IMPLEMENTED);
 	}
 
 	// TODO - DB INSERT QUERY
-	log_info("sensor simulation API: 200 OK");
+	log_info("sensor simulation api: %d", RESPONSE_OK);
 	return server_api_response(connection, RESPONSE_OK);
 }
 
@@ -74,7 +74,7 @@ extern int8_t server_api_open() {
 	memset(&callbacks, 0, sizeof(callbacks));
 	server_api_context = mg_start(&callbacks, NULL, server_options);
 	if (!server_api_context) {
-		log_error("failed to start API service");
+		log_error("failed to start api service");
 		return -1;
 	}
 
@@ -83,7 +83,7 @@ extern int8_t server_api_open() {
 	mg_set_request_handler(server_api_context, "/api/sensor/lvdt", server_api_sensor_simulator_handler, (void *)SENSOR_LVDT);
 	mg_set_request_handler(server_api_context, "/api/sensor/mmi", server_api_sensor_simulator_handler, (void *)SENSOR_MMI);
 	mg_set_request_handler(server_api_context, "/api/sensor/mzi", server_api_sensor_simulator_handler, (void *)SENSOR_MZI);
-	log_info("API service started");
+	log_info("api service started");
 	return 0;
 }
 
@@ -91,7 +91,7 @@ extern int8_t server_api_close() {
 	if (server_api_context) {
 		mg_stop(server_api_context);
 		server_api_context = NULL;
-		log_info("API service terminated");
+		log_info("api service terminated");
 	}
 
 	return 0;
