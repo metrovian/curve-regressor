@@ -12,6 +12,8 @@ protected:
 public:
 	Eigen::VectorXd calibrate(const Eigen::VectorXd &domain, const Eigen::VectorXd &range, const int counts, const double epsilon);
 	Eigen::VectorXd estimate(const Eigen::VectorXd &domain);
+	Eigen::VectorXd export_parameters();
+	Eigen::VectorXd import_parameters(const Eigen::VectorXd &import);
 	virtual ~abstract_iterative() {};
 };
 

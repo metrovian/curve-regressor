@@ -28,6 +28,15 @@ Eigen::VectorXd abstract_iterative::estimate(const Eigen::VectorXd &domain) {
 	return estimation;
 }
 
+Eigen::VectorXd abstract_iterative::export_parameters() {
+	return parameters;
+}
+
+Eigen::VectorXd abstract_iterative::import_parameters(const Eigen::VectorXd &import) {
+	parameters = import;
+	return parameters;
+}
+
 double regressor_lasso::construct_model(const double domain) {
 	double model = 0;
 	for (int32_t i = 0; i < parameters_degree + 1; ++i) {
