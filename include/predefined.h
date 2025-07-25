@@ -14,6 +14,8 @@
 #define NETWORK_CIVETWEB_ROOT   "service-civetweb"
 #define NETWORK_CIVETWEB_PORT   "8080"
 
+#define SENSOR_DATA_COUNTS      100
+
 #define SYMBOLIC_DEGREE_MAX     15
 #define SYMBOLIC_ITERATION_MAX  100
 #define SYMBOLIC_EPSILON        1.0000E-15
