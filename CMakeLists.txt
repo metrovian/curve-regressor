@@ -10,11 +10,16 @@ SET(CIVETWEB_BUILD_TESTING OFF CACHE BOOL "Disable civetweb tests" FORCE)
 INCLUDE_DIRECTORIES(
         ${CMAKE_CURRENT_SOURCE_DIR}/include
         ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/eigen
-        ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/tinyexpr)
+        ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/tinyexpr
+        ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/sqlite)
 
 FILE(GLOB_RECURSE SOURCES_COMMON
         ${CMAKE_CURRENT_SOURCE_DIR}/source/*.cpp
         ${CMAKE_CURRENT_SOURCE_DIR}/source/*.c)
+        
+ADD_LIBRARY(sqlite3 STATIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/sqlite/sqlite3.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/sqlite/sqlite3.h)
 
 ADD_SUBDIRECTORY(3rdparty/civetweb)
 ADD_SUBDIRECTORY(3rdparty/spdlog)
@@ -27,6 +32,7 @@ ADD_EXECUTABLE(start
 TARGET_LINK_LIBRARIES(start 
         PRIVATE 
         civetweb-c-library
+        sqlite3
         spdlog::spdlog)
 
 ADD_CUSTOM_TARGET(HTML ALL
