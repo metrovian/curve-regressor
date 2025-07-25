@@ -24,6 +24,14 @@ ADD_EXECUTABLE(start
         3rdparty/tinyexpr/tinyexpr.c
         ${SOURCES_COMMON})
 
-TARGET_LINK_LIBRARIES(start PRIVATE 
+TARGET_LINK_LIBRARIES(start 
+        PRIVATE 
         civetweb-c-library
         spdlog::spdlog)
+
+ADD_CUSTOM_COMMAND(
+        TARGET start POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${CMAKE_SOURCE_DIR}/service-civetweb"
+        "$<TARGET_FILE_DIR:start>/service-civetweb"
+)
