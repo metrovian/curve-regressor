@@ -3,6 +3,6 @@ git submodule foreach --recursive "git clean -fd"
 git submodule update --init --recursive
 
 cd sqlite
-make -f Makefile.msc sqlite3.c
+nmake /f makefile.msc sqlite3.c
 
 cd ..
