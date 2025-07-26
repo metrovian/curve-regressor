@@ -9,15 +9,23 @@
 <body>
         <h1>Curve Regressor</h1>
         <div class="control-panel">
-                <label for="sensor-select">Sensor Simulator</label>
-                <select id="sensor-select">
-                        <option value="RTD">RTD (Resistance Temperature Detector)</option>
-                        <option value="PD">PD (Photodiode)</option>
-                        <option value="LVDT">LVDT (Linear Variable Differential Transformer)</option>
-                        <option value="MMI">MMI (Michelson-Morley Interferometer)</option>
-                        <option value="MZI">MZI (Mach-Zehnder Interferometer)</option>
-                </select>
-                <button onclick="acquire()">Acquire</button>
+                <div class="columns">
+                        <div class="column">
+                                <select id="sensor-select">
+                                        <option value="RTD">RTD (Resistance Temperature Detector)</option>
+                                        <option value="PD">PD (Photodiode)</option>
+                                        <option value="LVDT">LVDT (Linear Variable Differential Transformer)</option>
+                                        <option value="MMI">MMI (Michelson-Morley Interferometer)</option>
+                                        <option value="MZI">MZI (Mach-Zehnder Interferometer)</option>
+                                </select>
+                                <select id="measurement-select">
+                                </select>
+                        </div>
+                        <div class="column">
+                                <button onclick="acquire()">Acquire</button>
+                                <button onclick="calibrate()">Calibrate</button>
+                        </div>
+                </div>
         </div>
         <script src="script.js"></script>
 </body>

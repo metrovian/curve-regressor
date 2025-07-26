@@ -39,6 +39,7 @@ void HANDLE_SIGINT(int32_t signal) {
 
 int32_t main(int32_t argc, char *argv[]) {
 	signal(SIGINT, HANDLE_SIGINT);
+	srand(time(NULL));
 	pthread_t pthread_start;
 	pthread_create(&pthread_start, NULL, main_start, NULL);
 	pthread_join(pthread_start, NULL);

@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <pthread.h>
 
 #define SYSTEM_LOGGER_SYSTEM    "system"
 #define SYSTEM_LOGGER_FORMAT    "log"
@@ -17,6 +18,7 @@
 #define NETWORK_SQLITE_SCHEMA   "service-sqlite/schema.sql"
 
 #define SENSOR_DATA_COUNTS      100
+#define SENSOR_DATA_MAX         1000
 #define SYMBOLIC_DEGREE_MAX     15
 #define SYMBOLIC_ITERATION_MAX  100
 #define SYMBOLIC_EPSILON        1.0000E-15
