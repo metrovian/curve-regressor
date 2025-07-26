@@ -10,7 +10,7 @@
 #define SYSTEM_LOGGER_SYSTEM    "system"
 #define SYSTEM_LOGGER_FORMAT    "log"
 #define SYSTEM_LOGGER_SIZE      4096
-#define SYSTEM_LOGGER_LOGLEVEL  1
+#define SYSTEM_LOGGER_LOGLEVEL  2
 
 #define NETWORK_CIVETWEB_ROOT   "service-civetweb"
 #define NETWORK_CIVETWEB_PORT   "8080"
