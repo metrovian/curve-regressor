@@ -2,6 +2,7 @@
 #include "wrapper_regressor.h"
 #include "wrapper_spdlog.h"
 #include "sensor_simulator.h"
+#include "server_database.h"
 #include "predefined.h"
 #include "civetweb.h"
 
@@ -56,12 +57,12 @@ static int32_t server_api_sensor_simulator_handler(struct mg_connection *connect
 	double domain[SENSOR_DATA_COUNTS] = {0};
 	double range[SENSOR_DATA_COUNTS] = {0};
 	if (sensor_simulator((sensor_simulator_t)sensor, SENSOR_DATA_COUNTS, domain, range) < 0) {
-		log_critical("sensor simulation api: %d", RESPONSE_NOT_IMPLEMENTED);
+		log_critical("acquire api: %d", RESPONSE_NOT_IMPLEMENTED);
 		return server_api_response(connection, RESPONSE_NOT_IMPLEMENTED);
 	}
 
-	// TODO - DB INSERT QUERY
-	log_info("sensor simulation api: %d", RESPONSE_OK);
+	server_database_insert_sensor_measurements((sensor_simulator_t)sensor, SENSOR_DATA_COUNTS, domain, range);
+	log_info("acquire success: %d", RESPONSE_OK);
 	return server_api_response(connection, RESPONSE_OK);
 }
 

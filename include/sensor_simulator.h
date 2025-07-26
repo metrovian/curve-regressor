@@ -2,7 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 #include <math.h>
+#include <time.h>
 
 typedef enum {
 	SENSOR_RTD = 0,

@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS sensor_measurements (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sensor INTEGER NOT NULL,
+    domain_csv TEXT NOT NULL,
+    range_csv TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);

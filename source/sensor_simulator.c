@@ -47,31 +47,31 @@ extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double
 		case SENSOR_RTD:
 			domain[i] = sensor_simulator_random(0.0000E+00, 6.5000E+02);
 			range[i] = sensor_simulator_rtd(domain[i]);
-			log_debug("rtd sensor simulation: %+.4E %+.4E", domain[i], range[i]);
+			log_debug("rtd simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
 
 		case SENSOR_PD:
 			domain[i] = sensor_simulator_random(1.0000E+00, 5.0000E+00);
 			range[i] = sensor_simulator_pd(domain[i]);
-			log_debug("pd sensor simulation: %+.4E %+.4E", domain[i], range[i]);
+			log_debug("pd simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
 
 		case SENSOR_LVDT:
 			domain[i] = sensor_simulator_random(-1.5000E+01, 1.5000E+01);
 			range[i] = sensor_simulator_lvdt(domain[i]);
-			log_debug("lvdt sensor simulation: %+.4E %+.4E", domain[i], range[i]);
+			log_debug("lvdt simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
 
 		case SENSOR_MMI:
 			domain[i] = sensor_simulator_random(-1.5000E-03, 1.5000E-03);
 			range[i] = sensor_simulator_mmi(domain[i]);
-			log_debug("mmi sensor simulation: %+.4E %+.4E", domain[i], range[i]);
+			log_debug("mmi simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
 
 		case SENSOR_MZI:
 			domain[i] = sensor_simulator_random(1.0000E+00, 1.5000E+00);
 			range[i] = sensor_simulator_mzi(domain[i]);
-			log_debug("mzi sensor simulation: %+.4E %+.4E", domain[i], range[i]);
+			log_debug("mzi simulation: %+.4E %+.4E", domain[i], range[i]);
 			break;
 
 		default:
@@ -82,6 +82,6 @@ extern int8_t sensor_simulator(sensor_simulator_t sensor, int32_t counts, double
 		}
 	}
 
-	log_info("sensor simulation success: %d", counts);
+	log_info("simulation success: %d", counts);
 	return 0;
 }
