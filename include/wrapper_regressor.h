@@ -15,8 +15,7 @@ typedef enum {
 	MODEL_SYMBOLIC_TAYLOR_RIDGE = 5,
 } regression_model_t;
 
-extern double
-calibrate_classic(regression_model_t model, int32_t counts, double *domain, double *range, void *arguments, double *parameters);
+extern double calibrate_classic(regression_model_t model, int32_t counts, double *domain, double *range, void *arguments, double *parameters);
 extern double calibrate_symbolic(regression_model_t model, int32_t counts, double *domain, double *range, void *arguments, double *parameters);
 #ifdef __cplusplus
 }
